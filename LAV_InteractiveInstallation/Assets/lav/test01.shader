@@ -3,6 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+	_color ("_color", COLOR) = (1,1,1,1)
 	_p1("_p1", Float) = 0
 		_p2("_p2", Float) = 0
     }
@@ -35,6 +36,7 @@
             float4 _MainTex_ST;
 			float _p1;
 			float _p2;
+			float4 _color;
             v2f vert (appdata v)
             {
                 v2f o;
@@ -100,7 +102,7 @@
 	float r5 = step(r2.z, 0.026);
 	float r6 = max(r4, r5);
 	float r3 = min(r2.x, max(r2.y, 1. - r4))*r6;
-	return float4(r3*float3(0.905882,0.,0.22745),0.);
+	return _color*r3;
             }
             ENDCG
         }
