@@ -69,7 +69,7 @@ public class Variables : MonoBehaviour
         //XValue = map(Mathf.Clamp(PositionX, 0, 1), 0, 1, 0, FixedCanvasSize - 940);
         // DISPLAY TEXT
         OBJ_Text.text = "<b></b><size=45>void Update(){" +
-            "UserPositionX.x = map(SPT_Kinect.Hip.transform.position.x, 0, 1, 0f, 1f);"+
+            "UserPositionX.x = map(KinectTracking.PosX1, MinKinect, MaxKinect, 0, 1);" +
             "PositionX = UserPositionX.x; "+
             "UserPositionX = map(KinectValue, 0, 1, MinUserPositionX, MaxUserPositionX);" +
             "UserPositionX = PositionX;" +
@@ -109,6 +109,11 @@ public class Variables : MonoBehaviour
             //float t = Mathf.PingPong(Time.time, duration) / duration;
             //cam.backgroundColor = Color.Lerp(color1, color2, t);
             //PositionX = Mathf.Lerp(MaxKinect, 0, t2 += 0.1f * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown("r"))
+        {
+            Application.LoadLevel(Application.loadedLevel);
         }
 
     }
